@@ -7,8 +7,7 @@
 
 **MCP server that gives LLMs access to real-time Brazilian agricultural data** — prices, crop estimates, climate, deforestation and more from 19 public sources.
 
-<!-- TODO: replace with actual GIF -->
-![agrobr-mcp demo](https://via.placeholder.com/800x400?text=agrobr-mcp+demo+GIF)
+![Demo](https://github.com/user-attachments/assets/76b6c45d-055e-4b36-aa10-02ae3f917aa8)
 
 ---
 

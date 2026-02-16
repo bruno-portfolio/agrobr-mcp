@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
-**MCP server that gives LLMs access to real-time Brazilian agricultural data** — prices, crop estimates, climate, deforestation and more from 19 public sources.
+**MCP server that gives LLMs access to real-time Brazilian agricultural data** — prices, crop estimates, climate, deforestation and more from 10 public sources.
 
 ![Demo](https://github.com/user-attachments/assets/76b6c45d-055e-4b36-aa10-02ae3f917aa8)
 

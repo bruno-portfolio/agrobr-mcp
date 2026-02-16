@@ -184,4 +184,4 @@ Adicione ao seu client MCP (Claude Desktop, Cursor ou Claude Code) conforme as i
 - [agrobr library](https://github.com/bruno-portfolio/agrobr) — biblioteca de dados agrícolas
 - [MCP Protocol](https://modelcontextprotocol.io) — Model Context Protocol
 
-<!-- mcp-name: io.github.bruno-portfolio/agrobr -->
+mcp-name: io.github.bruno-portfolio/agrobr

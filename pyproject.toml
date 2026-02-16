@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agrobr-mcp"
+version = "0.1.0"
+description = "MCP server exposing Brazilian agricultural data via agrobr"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "Bruno", email = "bruno@agrobr.dev" }]
+keywords = ["mcp", "agriculture", "brazil", "agro", "data"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "agrobr>=0.10.0",
+    "mcp>=1.2.0",
+]
+
+[project.scripts]
+agrobr-mcp = "agrobr_mcp.server:run"
+
+[project.urls]
+Homepage = "https://github.com/brunoalano/agrobr-mcp"
+Repository = "https://github.com/brunoalano/agrobr-mcp"
+Issues = "https://github.com/brunoalano/agrobr-mcp/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agrobr_mcp"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 99
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+markers = ["integration: marks tests as integration (deselect with '-m \"not integration\"')"]

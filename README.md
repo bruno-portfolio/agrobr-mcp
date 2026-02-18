@@ -59,6 +59,26 @@ claude mcp add agrobr python -- -m agrobr_mcp
 >
 > **Windows:** `echo python -m agrobr_mcp > run.bat && claude mcp add agrobr run.bat`
 
+### Docker
+
+```bash
+docker build -t agrobr-mcp .
+docker run --rm -i agrobr-mcp
+```
+
+Add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "agrobr": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "agrobr-mcp"]
+    }
+  }
+}
+```
+
 ---
 
 ## Tools
@@ -165,6 +185,13 @@ pip install agrobr-mcp
 ### Configuração
 
 Adicione ao seu client MCP (Claude Desktop, Cursor ou Claude Code) conforme as instruções acima.
+
+### Docker
+
+```bash
+docker build -t agrobr-mcp .
+docker run --rm -i agrobr-mcp
+```
 
 ### 10 tools disponíveis
 

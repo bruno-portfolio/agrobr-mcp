@@ -81,6 +81,10 @@ Add to `claude_desktop_config.json`:
 
 ---
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/bruno-portfolio-agrobr-mcp).
+
 ## Tools
 
 10 tools available out of the box:

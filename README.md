@@ -13,6 +13,8 @@
 
 ## Install
 
+Version 0.1.3 requires agrobr >=0.10.0,<2 and MCP Python SDK >=1.2.0,<2.
+
 ```bash
 pip install agrobr-mcp
 ```
@@ -177,6 +179,8 @@ MIT
 Servidor MCP que dá acesso a dados agrícolas brasileiros em tempo real para LLMs. Preços, safras, clima, desmatamento e mais — tudo de fontes públicas como CEPEA, CONAB, IBGE, INPE e B3.
 
 ### Instalação
+
+A versão 0.1.3 requer agrobr >=0.10.0,<2 e MCP Python SDK >=1.2.0,<2.
 
 ```bash
 pip install agrobr-mcp

@@ -12,6 +12,7 @@ build/
 venv/
 env/
 .env
+.mcpregistry_*_token
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/

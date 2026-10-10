@@ -1,8 +1,8 @@
-from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
 
 from agrobr_mcp.tools import clima, meta, precos, safra
 
-mcp = FastMCP(
+mcp = MCPServer(
     "agrobr",
     instructions="Real-time Brazilian agricultural data: prices, crop estimates, "
     "climate, deforestation and more. 19 public sources unified via agrobr.",

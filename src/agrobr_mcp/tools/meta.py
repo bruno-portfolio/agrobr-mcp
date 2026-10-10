@@ -1,55 +1,10 @@
-from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
 
 from agrobr_mcp.config import logger
-
-PRODUCTS_BY_TOOL: dict[str, list[str]] = {
-    "preco_diario": [
-        "soja",
-        "milho",
-        "boi_gordo",
-        "cafe_arabica",
-        "cafe_robusta",
-        "algodao",
-        "trigo",
-        "arroz",
-        "acucar",
-        "etanol_hidratado",
-        "etanol_anidro",
-        "frango_congelado",
-        "suino",
-        "leite",
-        "laranja_industria",
-    ],
-    "futuros_b3": [
-        "boi_gordo",
-        "milho",
-        "cafe_arabica",
-        "cafe_conillon",
-        "etanol",
-        "soja_cross",
-        "soja_fob",
-    ],
-    "estimativa_safra": ["soja", "milho", "arroz", "feijao", "algodao", "trigo", "cafe"],
-    "producao_anual": [
-        "soja",
-        "milho",
-        "arroz",
-        "feijao",
-        "algodao",
-        "trigo",
-        "cafe",
-        "cana_de_acucar",
-        "mandioca",
-        "laranja",
-        "cacau",
-        "sorgo",
-    ],
-    "balanco": ["soja", "milho", "arroz", "feijao", "algodao", "trigo", "cafe"],
-    "progresso_safra": ["soja", "milho", "arroz", "feijao", "algodao", "trigo"],
-}
+from agrobr_mcp.tools.utils import DATASET_BY_TOOL, products
 
 
-def register(mcp: FastMCP) -> None:
+def register(mcp: MCPServer) -> None:
     @mcp.tool()
     async def listar_produtos(tool: str = "") -> str:
         """List valid products/parameters for each agrobr-mcp tool.
@@ -61,15 +16,14 @@ def register(mcp: FastMCP) -> None:
             tool: Tool name (e.g. "preco_diario"). Empty = all tools.
         """
         if tool:
-            products = PRODUCTS_BY_TOOL.get(tool)
-            if not products:
-                valid_tools = ", ".join(sorted(PRODUCTS_BY_TOOL))
+            if tool not in DATASET_BY_TOOL:
+                valid_tools = ", ".join(sorted(DATASET_BY_TOOL))
                 return f"Tool '{tool}' não encontrada. Tools com produtos: {valid_tools}"
-            return f"## Produtos — {tool}\n\n{', '.join(products)}"
+            return f"## Produtos — {tool}\n\n{products(tool)}"
 
         lines = ["## Produtos válidos por tool\n"]
-        for tool_name, products in PRODUCTS_BY_TOOL.items():
-            lines.append(f"**{tool_name}:** {', '.join(products)}")
+        for tool_name in DATASET_BY_TOOL:
+            lines.append(f"**{tool_name}:** {products(tool_name)}")
         return "\n".join(lines)
 
     @mcp.tool()

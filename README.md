@@ -13,7 +13,7 @@
 
 ## Install
 
-Version 0.1.3 requires agrobr >=0.10.0,<2 and MCP Python SDK >=1.2.0,<2.
+Version 0.2.0 requires agrobr >=2.0.0,<3 and MCP Python SDK >=2.0.0,<3.
 
 ```bash
 pip install agrobr-mcp
@@ -85,30 +85,34 @@ Add to `claude_desktop_config.json`:
 
 ## Tools
 
-10 tools available out of the box:
+14 tools available out of the box:
 
 ### Prices & Market
 
 | Tool | Description |
 |------|-------------|
 | `preco_diario` | Daily spot prices for agricultural commodities (CEPEA/ESALQ) |
-| `futuros_b3` | Daily settlement prices for agricultural futures on B3 exchange |
+| `futuros_b3` | Daily settlement prices for agricultural futures on B3 exchange (latest published session by default) |
+| `exportacao` | Agricultural exports summed by month, by product and state of origin (Comex Stat; ABIOVE fallback) |
 
 ### Production & Crop
 
 | Tool | Description |
 |------|-------------|
-| `estimativa_safra` | Current crop season estimate by state (CONAB/IBGE) |
+| `estimativa_safra` | Crop estimate by state, latest season with data by default (CONAB/IBGE) |
 | `producao_anual` | Historical annual production by state (IBGE PAM) |
 | `balanco` | Supply and demand balance — stock, consumption, exports (CONAB) |
 | `progresso_safra` | Weekly planting and harvesting progress by state (CONAB) |
+| `serie_historica_safra` | Historical crop series by season — area, production, yield; last 10 years by default (CONAB) |
+| `rebanho` | Livestock herds and animal products by state, latest published year by default (IBGE PPM) |
 
 ### Climate & Environment
 
 | Tool | Description |
 |------|-------------|
 | `clima` | Climate data by state — temperature, precipitation, radiation (NASA POWER) |
-| `desmatamento` | Deforestation rates and real-time alerts by biome (INPE) |
+| `desmatamento` | Deforestation polygons (PRODES for the previous calendar year, falling back one more year when empty) and alerts (DETER, last 15 days) by biome, with optional year and state filters, up to 2,000 records (INPE) |
+| `queimadas` | Fire hotspots of one day by municipality and biome, reference satellite (INPE) |
 
 ### Meta
 
@@ -180,7 +184,7 @@ Servidor MCP que dá acesso a dados agrícolas brasileiros em tempo real para LL
 
 ### Instalação
 
-A versão 0.1.3 requer agrobr >=0.10.0,<2 e MCP Python SDK >=1.2.0,<2.
+A versão 0.2.0 requer agrobr >=2.0.0,<3 e MCP Python SDK >=2.0.0,<3.
 
 ```bash
 pip install agrobr-mcp
@@ -197,16 +201,20 @@ docker build -t agrobr-mcp .
 docker run --rm -i agrobr-mcp
 ```
 
-### 10 tools disponíveis
+### 14 tools disponíveis
 
 - **preco_diario** — Preço spot de commodities agrícolas (CEPEA/ESALQ)
-- **futuros_b3** — Ajustes diários de futuros agrícolas na B3
-- **estimativa_safra** — Estimativa da safra corrente por UF (CONAB/IBGE)
+- **futuros_b3** — Ajustes diários de futuros agrícolas na B3 (por padrão, o último pregão publicado)
+- **exportacao** — Exportações agrícolas somadas por mês, por produto e UF de origem (Comex Stat; ABIOVE como reserva)
+- **estimativa_safra** — Estimativa de safra por UF, por padrão a safra mais recente com dado (CONAB/IBGE)
 - **producao_anual** — Produção histórica por UF (IBGE PAM)
 - **balanco** — Balanço de oferta e demanda (CONAB)
 - **progresso_safra** — Progresso semanal de plantio e colheita (CONAB)
+- **serie_historica_safra** — Série histórica por safra: área, produção e produtividade; por padrão os últimos 10 anos (CONAB)
+- **rebanho** — Rebanhos e produção animal por UF, por padrão o ano mais recente publicado (IBGE PPM)
 - **clima** — Dados climáticos por UF (NASA POWER)
-- **desmatamento** — Taxa de desmatamento e alertas por bioma (INPE)
+- **desmatamento** — Polígonos de desmatamento (PRODES do ano anterior ao corrente, recuando mais um ano se vier vazio) e alertas (DETER, últimos 15 dias) por bioma, com filtros opcionais de ano e UF, até 2.000 registros (INPE)
+- **queimadas** — Focos de calor de um dia por município e bioma, satélite de referência (INPE)
 - **listar_produtos** — Lista produtos válidos por tool
 - **health_check** — Status das fontes de dados
 

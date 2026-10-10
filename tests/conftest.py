@@ -1,12 +1,12 @@
 import pytest
-from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
 
 from agrobr_mcp.tools import clima, meta, precos, safra
 
 
 @pytest.fixture
-def mcp_server() -> FastMCP:
-    server = FastMCP("test")
+def mcp_server() -> MCPServer:
+    server = MCPServer("test")
     precos.register(server)
     safra.register(server)
     clima.register(server)

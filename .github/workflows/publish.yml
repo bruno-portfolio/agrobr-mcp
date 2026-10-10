@@ -8,7 +8,13 @@ permissions:
   id-token: write
 
 jobs:
+  tests:
+    permissions:
+      contents: read
+    uses: ./.github/workflows/tests.yml
+
   publish:
+    needs: tests
     runs-on: ubuntu-latest
     environment: pypi
     steps:

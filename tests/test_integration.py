@@ -9,8 +9,12 @@ EXPECTED_TOOLS = {
     "producao_anual",
     "balanco",
     "progresso_safra",
+    "serie_historica_safra",
+    "rebanho",
+    "exportacao",
     "clima",
     "desmatamento",
+    "queimadas",
     "listar_produtos",
     "health_check",
 }
